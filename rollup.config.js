@@ -17,7 +17,7 @@ function createConfig(env, module) {
         external:
             module === 'umd'
                 ? ['react', 'prop-types', 'react-formutil', 'antd-mobile']
-                : id => !id.startsWith('.') && id !== 'tslib' && !path.isAbsolute(id),
+                : id => !id.startsWith('.') && !path.isAbsolute(id),
         output: {
             file: `dist/react-antm-formutil.${module}.${env}.js`,
             format: module,
