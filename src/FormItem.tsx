@@ -13,20 +13,17 @@ import {
     Switch,
     TextareaItem
 } from 'antd-mobile';
-import { ListItemProps } from 'antd-mobile/lib/list/ListItem';
 import PropTypes from 'prop-types';
 import React, { Children, cloneElement, Component } from 'react';
-import { $FieldHandler, BaseEasyFieldComponentProps, EasyField } from 'react-formutil';
+import { $FieldHandler, BaseEasyFieldComponentProps, EasyField, FieldValidatorProps, OtherKeys } from 'react-formutil';
 
 export type ErrorLevel = 0 | 1 | 2 | 'off';
 
 export interface FormItemProps<T = any, P = {}, Fields = {}, WeakFields = Fields>
-    extends ListItemProps,
-        BaseEasyFieldComponentProps<T, P, Fields, WeakFields> {
+    extends BaseEasyFieldComponentProps<T, P, Fields, WeakFields> {
     label?: React.ReactNode;
     errorLevel?: ErrorLevel;
     children: React.ReactElement<any>;
-    [prop: string]: any;
 }
 
 const ListItem = List.Item;
@@ -80,7 +77,7 @@ const _RadioItem = isUglify ? Radio.RadioItem : 'RadioItem';
 const _AgreeItem = isUglify ? Checkbox.AgreeItem : 'AgreeItem';
 
 export class FormItem<T = any, P = {}, Fields = {}, WeakFields = Fields> extends Component<
-    FormItemProps<T, P, Fields, WeakFields>
+    FormItemProps<T, P, Fields, WeakFields> & FieldValidatorProps<P> & OtherKeys
 > {
     public static propTypes = {
         // @ts-ignore
