@@ -1,0 +1,49 @@
+{
+  "name": "react-antm-formutil",
+  "version": "0.0.1",
+  "description": "Happy to use react-formutil in the project based on antd-mobile^_^",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "pack": "npm run build && rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://qiqiboy@github.com/qiqiboy/react-antm-formutil.git"
+  },
+  "keywords": [
+    "react-formutil",
+    "react-form",
+    "react-component",
+    "form-react",
+    "antd-mobile"
+  ],
+  "author": "qiqiboy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qiqiboy/react-antm-formutil/issues"
+  },
+  "homepage": "https://github.com/qiqiboy/react-antm-formutil#readme",
+  "devDependencies": {
+    "@types/prop-types": "^15.7.1",
+    "@types/react": "^16.8.13",
+    "antd-mobile": "2.2.11",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-formutil": "^0.5.8",
+    "rollup": "^1.10.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-copy": "^1.1.0",
+    "rollup-plugin-filesize": "^6.0.1",
+    "rollup-plugin-node-resolve": "^4.2.1",
+    "rollup-plugin-replace": "^2.1.1",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-terser": "^4.0.4",
+    "tslib": "^1.9.3",
+    "typescript": "^3.4.3"
+  }
+}
