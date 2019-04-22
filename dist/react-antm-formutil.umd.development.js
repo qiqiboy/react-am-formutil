@@ -57,6 +57,56 @@
         return t;
     }
 
+    var CheckboxItem = antdMobile.Checkbox.CheckboxItem;
+    var CheckboxGroup = /** @class */ (function (_super) {
+        __extends(CheckboxGroup, _super);
+        function CheckboxGroup() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        CheckboxGroup.prototype.render = function () {
+            var _this = this;
+            var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data;
+            var childOnChange = function (childValue, ev) {
+                var checked = ev.target.checked;
+                onChange(checked ? value.concat(childValue) : value.filter(function (v) { return v !== childValue; }));
+            };
+            return data.map(function (item) { return (React__default.createElement(CheckboxItem, __assign({ key: item.value }, item, { checked: value.indexOf(item.value) > -1, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
+        };
+        CheckboxGroup.propTypes = {
+            onChange: PropTypes.func,
+            onFocus: PropTypes.func,
+            onBlur: PropTypes.func,
+            value: PropTypes.array
+        };
+        CheckboxGroup.defaultProps = {
+            value: []
+        };
+        return CheckboxGroup;
+    }(React.Component));
+
+    var RadioItem = antdMobile.Radio.RadioItem;
+    var RadioGroup = /** @class */ (function (_super) {
+        __extends(RadioGroup, _super);
+        function RadioGroup() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        RadioGroup.prototype.render = function () {
+            var _this = this;
+            var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data;
+            var childOnChange = function (childValue) {
+                onChange(childValue);
+            };
+            return data.map(function (item) { return (React__default.createElement(RadioItem, __assign({ key: item.value }, item, { checked: value === item.value, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
+        };
+        RadioGroup.propTypes = {
+            onChange: PropTypes.func,
+            onFocus: PropTypes.func,
+            onBlur: PropTypes.func,
+            value: PropTypes.any
+        };
+        return RadioGroup;
+    }(React.Component));
+
     var ListItem = antdMobile.List.Item;
     var errorLevelGlobal = 1;
     /**
@@ -99,6 +149,8 @@
     var _CheckboxItem = isUglify ? antdMobile.Checkbox.CheckboxItem : 'CheckboxItem';
     var _RadioItem = isUglify ? antdMobile.Radio.RadioItem : 'RadioItem';
     var _AgreeItem = isUglify ? antdMobile.Checkbox.AgreeItem : 'AgreeItem';
+    var _CheckboxGroup = isUglify ? CheckboxGroup : 'CheckboxGroup';
+    var _RadioGroup = isUglify ? RadioGroup : 'RadioGroup';
     var FormItem = /** @class */ (function (_super) {
         __extends(FormItem, _super);
         function FormItem() {
@@ -238,6 +290,9 @@
                         case _DatePicker:
                         case _Picker:
                             return React.cloneElement(children, __assign({}, childProps, { children: (React__default.createElement(ListItem, __assign({}, restProps, errorProps), label)) }));
+                        case _CheckboxGroup:
+                        case _RadioGroup:
+                            return React.cloneElement(children, childProps);
                         default:
                             var renderChild = React.cloneElement(children, childProps);
                             return label ? (React__default.createElement(ListItem, __assign({}, restProps, errorProps, { extra: renderChild }), label)) : (React__default.createElement(ListItem, __assign({}, restProps, errorProps), renderChild));
@@ -256,7 +311,9 @@
             }
         });
     });
+    exports.CheckboxGroup = CheckboxGroup;
     exports.FormItem = FormItem;
+    exports.RadioGroup = RadioGroup;
     exports.setErrorLevel = setErrorLevel;
 
     Object.defineProperty(exports, '__esModule', { value: true });

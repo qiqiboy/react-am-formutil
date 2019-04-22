@@ -1,9 +1,59 @@
-import { __extends, __rest, __assign } from 'tslib';
-import { List, Switch, Checkbox, Radio, PickerView, DatePicker, Range, Picker, ImagePicker, InputItem, TextareaItem, Slider, Modal } from 'antd-mobile';
+import { __extends, __assign, __rest } from 'tslib';
+import { Checkbox, Radio, List, Switch, PickerView, DatePicker, Range, Picker, ImagePicker, InputItem, TextareaItem, Slider, Modal } from 'antd-mobile';
 import PropTypes from 'prop-types';
-import React, { Children, cloneElement, Component } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import { EasyField } from 'react-formutil';
 export * from 'react-formutil';
+
+var CheckboxItem = Checkbox.CheckboxItem;
+var CheckboxGroup = /** @class */ (function (_super) {
+    __extends(CheckboxGroup, _super);
+    function CheckboxGroup() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    CheckboxGroup.prototype.render = function () {
+        var _this = this;
+        var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data;
+        var childOnChange = function (childValue, ev) {
+            var checked = ev.target.checked;
+            onChange(checked ? value.concat(childValue) : value.filter(function (v) { return v !== childValue; }));
+        };
+        return data.map(function (item) { return (React.createElement(CheckboxItem, __assign({ key: item.value }, item, { checked: value.indexOf(item.value) > -1, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
+    };
+    CheckboxGroup.propTypes = {
+        onChange: PropTypes.func,
+        onFocus: PropTypes.func,
+        onBlur: PropTypes.func,
+        value: PropTypes.array
+    };
+    CheckboxGroup.defaultProps = {
+        value: []
+    };
+    return CheckboxGroup;
+}(Component));
+
+var RadioItem = Radio.RadioItem;
+var RadioGroup = /** @class */ (function (_super) {
+    __extends(RadioGroup, _super);
+    function RadioGroup() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    RadioGroup.prototype.render = function () {
+        var _this = this;
+        var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data;
+        var childOnChange = function (childValue) {
+            onChange(childValue);
+        };
+        return data.map(function (item) { return (React.createElement(RadioItem, __assign({ key: item.value }, item, { checked: value === item.value, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
+    };
+    RadioGroup.propTypes = {
+        onChange: PropTypes.func,
+        onFocus: PropTypes.func,
+        onBlur: PropTypes.func,
+        value: PropTypes.any
+    };
+    return RadioGroup;
+}(Component));
 
 var ListItem = List.Item;
 var errorLevelGlobal = 1;
@@ -47,6 +97,8 @@ var _Slider = isUglify ? Slider : 'Slider';
 var _CheckboxItem = isUglify ? Checkbox.CheckboxItem : 'CheckboxItem';
 var _RadioItem = isUglify ? Radio.RadioItem : 'RadioItem';
 var _AgreeItem = isUglify ? Checkbox.AgreeItem : 'AgreeItem';
+var _CheckboxGroup = isUglify ? CheckboxGroup : 'CheckboxGroup';
+var _RadioGroup = isUglify ? RadioGroup : 'RadioGroup';
 var FormItem = /** @class */ (function (_super) {
     __extends(FormItem, _super);
     function FormItem() {
@@ -186,6 +238,9 @@ var FormItem = /** @class */ (function (_super) {
                     case _DatePicker:
                     case _Picker:
                         return cloneElement(children, __assign({}, childProps, { children: (React.createElement(ListItem, __assign({}, restProps, errorProps), label)) }));
+                    case _CheckboxGroup:
+                    case _RadioGroup:
+                        return cloneElement(children, childProps);
                     default:
                         var renderChild = cloneElement(children, childProps);
                         return label ? (React.createElement(ListItem, __assign({}, restProps, errorProps, { extra: renderChild }), label)) : (React.createElement(ListItem, __assign({}, restProps, errorProps), renderChild));
@@ -196,5 +251,5 @@ var FormItem = /** @class */ (function (_super) {
     return FormItem;
 }(Component));
 
-export { FormItem, setErrorLevel };
+export { CheckboxGroup, FormItem, RadioGroup, setErrorLevel };
 //# sourceMappingURL=react-antm-formutil.esm.development.js.map

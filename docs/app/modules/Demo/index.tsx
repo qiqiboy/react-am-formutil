@@ -15,7 +15,7 @@ import {
     PickerView,
     Stepper
 } from 'antd-mobile';
-import { withForm, FormItem } from '../../../../';
+import { withForm, FormItem, CheckboxGroup, RadioGroup } from '../../src';
 
 // const data = [{ value: 0, label: 'Ph.D.' }, { value: 1, label: 'Bachelor' }, { value: 2, label: 'College diploma' }];
 const seasons = [
@@ -52,7 +52,6 @@ function Standard(props) {
                 <FormItem name="input.text" label="Input" placeholder="Text" required>
                     <InputItem type="text" />
                 </FormItem>
-                <WingBlank style={{ margin: '5px 12px' }}>在转出方券商账户姓名，必须与老虎证券开户姓名一致</WingBlank>
                 <FormItem name="input.pwd" label="Password Password" placeholder="Password" required>
                     <InputItem type="password" clear />
                 </FormItem>
@@ -77,6 +76,42 @@ function Standard(props) {
                 </FormItem>
                 <FormItem name="switch" label="switch" required>
                     <Switch />
+                </FormItem>
+            </List>
+
+            <h3>Checkbox List</h3>
+            <List>
+                <FormItem name="checkboxGroup" label="checkbox" required>
+                    <CheckboxGroup
+                        data={[
+                            {
+                                value: 'a',
+                                title: 'A'
+                            },
+                            {
+                                value: 'b',
+                                title: 'B'
+                            }
+                        ]}
+                    />
+                </FormItem>
+            </List>
+
+            <h3>Radio List</h3>
+            <List>
+                <FormItem name="radioGroup" label="checkbox" required>
+                    <RadioGroup
+                        data={[
+                            {
+                                value: 'a',
+                                title: 'A'
+                            },
+                            {
+                                value: 'b',
+                                title: 'B'
+                            }
+                        ]}
+                    />
                 </FormItem>
             </List>
 

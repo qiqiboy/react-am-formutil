@@ -77,8 +77,8 @@ const _Slider = isUglify ? Slider : 'Slider';
 const _CheckboxItem = isUglify ? Checkbox.CheckboxItem : 'CheckboxItem';
 const _RadioItem = isUglify ? Radio.RadioItem : 'RadioItem';
 const _AgreeItem = isUglify ? Checkbox.AgreeItem : 'AgreeItem';
-const _CheckboxGroup = isUglify ? CheckboxGroup : 'CheckboxGroup'
-const _RadioGroup = isUglify ? RadioGroup : 'RadioGroup'
+const _CheckboxGroup = isUglify ? CheckboxGroup : 'CheckboxGroup';
+const _RadioGroup = isUglify ? RadioGroup : 'RadioGroup';
 
 export class FormItem<T = any, P = {}, Fields = {}, WeakFields = Fields> extends Component<
     FormItemProps<T, P, Fields, WeakFields> & FieldValidatorProps<P> & OtherKeys
