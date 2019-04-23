@@ -19,9 +19,9 @@ function createConfig(env, module) {
                 ? ['react', 'prop-types', 'react-formutil', 'antd-mobile']
                 : id => !id.startsWith('.') && !path.isAbsolute(id),
         output: {
-            file: `dist/react-antm-formutil.${module}.${env}.js`,
+            file: `dist/react-am-formutil.${module}.${env}.js`,
             format: module,
-            name: 'ReactAntmFormutil',
+            name: 'ReactAmFormutil',
             exports: 'named',
             sourcemap: !isProd,
             globals: {

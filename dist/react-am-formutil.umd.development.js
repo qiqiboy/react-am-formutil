@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('antd-mobile'), require('prop-types'), require('react'), require('react-formutil')) :
     typeof define === 'function' && define.amd ? define(['exports', 'antd-mobile', 'prop-types', 'react', 'react-formutil'], factory) :
-    (global = global || self, factory(global.ReactAntmFormutil = {}, global.AntdMobile, global.PropTypes, global.React, global.ReactFormutil));
+    (global = global || self, factory(global.ReactAmFormutil = {}, global.AntdMobile, global.PropTypes, global.React, global.ReactFormutil));
 }(this, function (exports, antdMobile, PropTypes, React, reactFormutil) { 'use strict';
 
     PropTypes = PropTypes && PropTypes.hasOwnProperty('default') ? PropTypes['default'] : PropTypes;
@@ -65,12 +65,12 @@
         }
         CheckboxGroup.prototype.render = function () {
             var _this = this;
-            var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data;
+            var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data, restProps = __rest(_a, ["onChange", "value", "onFocus", "onBlur", "data"]);
             var childOnChange = function (childValue, ev) {
                 var checked = ev.target.checked;
                 onChange(checked ? value.concat(childValue) : value.filter(function (v) { return v !== childValue; }));
             };
-            return data.map(function (item) { return (React__default.createElement(CheckboxItem, __assign({ key: item.value }, item, { checked: value.indexOf(item.value) > -1, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
+            return data.map(function (item) { return (React__default.createElement(CheckboxItem, __assign({ key: item.value }, restProps, item, { checked: value.indexOf(item.value) > -1, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
         };
         CheckboxGroup.propTypes = {
             onChange: PropTypes.func,
@@ -92,11 +92,11 @@
         }
         RadioGroup.prototype.render = function () {
             var _this = this;
-            var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data;
+            var _a = this.props, onChange = _a.onChange, value = _a.value, onFocus = _a.onFocus, onBlur = _a.onBlur, data = _a.data, restProps = __rest(_a, ["onChange", "value", "onFocus", "onBlur", "data"]);
             var childOnChange = function (childValue) {
                 onChange(childValue);
             };
-            return data.map(function (item) { return (React__default.createElement(RadioItem, __assign({ key: item.value }, item, { checked: value === item.value, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
+            return data.map(function (item) { return (React__default.createElement(RadioItem, __assign({ key: item.value }, restProps, item, { checked: value === item.value, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
         };
         RadioGroup.propTypes = {
             onChange: PropTypes.func,
@@ -264,7 +264,7 @@
                     // @ts-ignore
                     restProps.className = Object.keys(allClassNames)
                         .filter(function (key) { return allClassNames[key]; })
-                        .map(function (key) { return "antm-formutil-" + key; })
+                        .map(function (key) { return "am-formutil-" + key; })
                         .concat(className)
                         .filter(Boolean)
                         .join(' ');
@@ -292,10 +292,10 @@
                             return React.cloneElement(children, __assign({}, childProps, { children: (React__default.createElement(ListItem, __assign({}, restProps, errorProps), label)) }));
                         case _CheckboxGroup:
                         case _RadioGroup:
-                            return React.cloneElement(children, childProps);
+                            return React.cloneElement(children, __assign({}, restProps, errorProps, childProps));
                         default:
                             var renderChild = React.cloneElement(children, childProps);
-                            return label ? (React__default.createElement(ListItem, __assign({}, restProps, errorProps, { extra: renderChild }), label)) : (React__default.createElement(ListItem, __assign({}, restProps, errorProps), renderChild));
+                            return (React__default.createElement(ListItem, __assign({}, restProps, errorProps, (label ? { extra: renderChild, children: label } : { children: renderChild }))));
                     }
                 } })));
         };
@@ -319,4 +319,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
-//# sourceMappingURL=react-antm-formutil.umd.development.js.map
+//# sourceMappingURL=react-am-formutil.umd.development.js.map

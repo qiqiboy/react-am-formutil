@@ -1,5 +1,5 @@
 {
-  "name": "react-antm-formutil",
+  "name": "react-am-formutil",
   "version": "0.0.1",
   "description": "Happy to use react-formutil in the project based on antd-mobile^_^",
   "main": "dist/index.cjs.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://qiqiboy@github.com/qiqiboy/react-antm-formutil.git"
+    "url": "git+https://qiqiboy@github.com/qiqiboy/react-am-formutil.git"
   },
   "keywords": [
     "react-formutil",
@@ -23,9 +23,9 @@
   "author": "qiqiboy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/qiqiboy/react-antm-formutil/issues"
+    "url": "https://github.com/qiqiboy/react-am-formutil/issues"
   },
-  "homepage": "https://github.com/qiqiboy/react-antm-formutil#readme",
+  "homepage": "https://github.com/qiqiboy/react-am-formutil#readme",
   "devDependencies": {
     "@types/prop-types": "^15.7.1",
     "@types/react": "^16.8.13",

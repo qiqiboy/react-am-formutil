@@ -27,7 +27,7 @@ export class RadioGroup extends Component<RadioGroupProps> {
     };
 
     public render() {
-        const { onChange, value, onFocus, onBlur, data } = this.props;
+        const { onChange, value, onFocus, onBlur, data, ...restProps } = this.props;
         const childOnChange = childValue => {
             onChange!(childValue);
         };
@@ -35,6 +35,7 @@ export class RadioGroup extends Component<RadioGroupProps> {
         return data.map(item => (
             <RadioItem
                 key={item.value}
+                {...restProps}
                 {...item}
                 checked={value === item.value}
                 children={item.title}

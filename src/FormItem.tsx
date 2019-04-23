@@ -77,8 +77,8 @@ const _Slider = isUglify ? Slider : 'Slider';
 const _CheckboxItem = isUglify ? Checkbox.CheckboxItem : 'CheckboxItem';
 const _RadioItem = isUglify ? Radio.RadioItem : 'RadioItem';
 const _AgreeItem = isUglify ? Checkbox.AgreeItem : 'AgreeItem';
-const _CheckboxGroup = isUglify ? CheckboxGroup : 'CheckboxGroup'
-const _RadioGroup = isUglify ? RadioGroup : 'RadioGroup'
+const _CheckboxGroup = isUglify ? CheckboxGroup : 'CheckboxGroup';
+const _RadioGroup = isUglify ? RadioGroup : 'RadioGroup';
 
 export class FormItem<T = any, P = {}, Fields = {}, WeakFields = Fields> extends Component<
     FormItemProps<T, P, Fields, WeakFields> & FieldValidatorProps<P> & OtherKeys
@@ -219,7 +219,7 @@ export class FormItem<T = any, P = {}, Fields = {}, WeakFields = Fields> extends
                     // @ts-ignore
                     restProps.className = Object.keys(allClassNames)
                         .filter(key => allClassNames[key])
-                        .map(key => `antm-formutil-${key}`)
+                        .map(key => `am-formutil-${key}`)
                         .concat(className)
                         .filter(Boolean)
                         .join(' ');
@@ -266,19 +266,21 @@ export class FormItem<T = any, P = {}, Fields = {}, WeakFields = Fields> extends
 
                         case _CheckboxGroup:
                         case _RadioGroup:
-                            return cloneElement(children, childProps);
+                            return cloneElement(children, {
+                                ...restProps,
+                                ...errorProps,
+                                ...childProps
+                            });
 
                         default:
                             const renderChild = cloneElement(children, childProps);
 
-                            return label ? (
-                                <ListItem {...restProps} {...errorProps} extra={renderChild}>
-                                    {label}
-                                </ListItem>
-                            ) : (
-                                <ListItem {...restProps} {...errorProps}>
-                                    {renderChild}
-                                </ListItem>
+                            return (
+                                <ListItem
+                                    {...restProps}
+                                    {...errorProps}
+                                    {...(label ? { extra: renderChild, children: label } : { children: renderChild })}
+                                />
                             );
                     }
                 }}

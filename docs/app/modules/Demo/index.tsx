@@ -13,6 +13,7 @@ import {
     Picker,
     DatePicker,
     PickerView,
+    SearchBar,
     Stepper
 } from 'antd-mobile';
 import { withForm, FormItem, CheckboxGroup, RadioGroup } from '../../src';
@@ -63,6 +64,13 @@ function Standard(props) {
                 </FormItem>
                 <FormItem name="textarea.count" required placeholder="MultipLine" label="Count">
                     <TextareaItem count={100} rows={3} />
+                </FormItem>
+            </List>
+
+            <h3>SearchBar</h3>
+            <List>
+                <FormItem name="search" required $defaultValue="美食">
+                    <SearchBar />
                 </FormItem>
             </List>
 
@@ -132,7 +140,7 @@ function Standard(props) {
 
             <h3>Slider</h3>
             <WingBlank size="lg">
-                <FormItem name="slider" required $defaultValue={20}>
+                <FormItem name="slider" required $defaultValue={20} onChange={() => console.log(4)}>
                     <Slider />
                 </FormItem>
             </WingBlank>

@@ -31,7 +31,7 @@ export class CheckboxGroup extends Component<CheckboxGroupProps> {
     };
 
     public render() {
-        const { onChange, value, onFocus, onBlur, data } = this.props;
+        const { onChange, value, onFocus, onBlur, data, ...restProps } = this.props;
         const childOnChange = (childValue, ev) => {
             const { checked } = ev.target;
 
@@ -41,6 +41,7 @@ export class CheckboxGroup extends Component<CheckboxGroupProps> {
         return data.map(item => (
             <CheckboxItem
                 key={item.value}
+                {...restProps}
                 {...item}
                 checked={value!.indexOf(item.value) > -1}
                 children={item.title}
