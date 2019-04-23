@@ -76,7 +76,8 @@
             onChange: PropTypes.func,
             onFocus: PropTypes.func,
             onBlur: PropTypes.func,
-            value: PropTypes.array
+            value: PropTypes.array,
+            data: PropTypes.array.isRequired
         };
         CheckboxGroup.defaultProps = {
             value: []
@@ -99,11 +100,12 @@
             return data.map(function (item) { return (React__default.createElement(RadioItem, __assign({ key: item.value }, restProps, item, { checked: value === item.value, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
         };
         RadioGroup.propTypes = {
-            onChange: PropTypes.func,
-            onFocus: PropTypes.func,
-            onBlur: PropTypes.func,
-            value: PropTypes.any
-        };
+                onChange: PropTypes.func,
+                onFocus: PropTypes.func,
+                onBlur: PropTypes.func,
+                value: PropTypes.any,
+                data: PropTypes.array.isRequired
+            };
         return RadioGroup;
     }(React.Component));
 

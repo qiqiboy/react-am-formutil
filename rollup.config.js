@@ -31,6 +31,9 @@ function createConfig(env, module) {
                 'antd-mobile': 'AntdMobile'
             }
         },
+        treeshake: {
+            pureExternalModules: true
+        },
         plugins: [
             replace({
                 'process.env.NODE_ENV': JSON.stringify(env)

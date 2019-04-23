@@ -6,7 +6,7 @@ export interface CheckboxGroupItem extends ListItemProps {
     title: React.ReactNode;
 }
 export interface CheckboxGroupProps {
-    onChange?(value: any): void;
+    onChange?(value: any[]): void;
     onFocus?(): void;
     onBlur?(): void;
     value?: any[];
@@ -18,7 +18,8 @@ export declare class CheckboxGroup extends Component<CheckboxGroupProps> {
         onFocus: PropTypes.Requireable<(...args: any[]) => any>;
         onBlur: PropTypes.Requireable<(...args: any[]) => any>;
         value: PropTypes.Requireable<any[]>;
-    };
+        data: PropTypes.Validator<any[]>;
+    } | undefined;
     static defaultProps: {
         value: never[];
     };

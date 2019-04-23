@@ -6,8 +6,9 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "sync": "cp -vr docs/app/src/* src",
     "build": "tsc",
-    "pack": "npm run build && rollup -c"
+    "pack": "npm run sync && npm run build && rollup -c"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,12 @@
     "url": "https://github.com/qiqiboy/react-am-formutil/issues"
   },
   "homepage": "https://github.com/qiqiboy/react-am-formutil#readme",
+  "peerDependencies": {
+    "react": ">16.0.0",
+    "prop-types": ">15.5.0",
+    "antd-mobile": ">=2.0.0",
+    "react-formutil": ">0.5.6"
+  },
   "devDependencies": {
     "@types/prop-types": "^15.7.1",
     "@types/react": "^16.8.13",

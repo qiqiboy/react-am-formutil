@@ -11,7 +11,7 @@ export interface CheckboxGroupItem extends ListItemProps {
 }
 
 export interface CheckboxGroupProps {
-    onChange?(value: any): void;
+    onChange?(value: any[]): void;
     onFocus?(): void;
     onBlur?(): void;
     value?: any[];
@@ -19,12 +19,16 @@ export interface CheckboxGroupProps {
 }
 
 export class CheckboxGroup extends Component<CheckboxGroupProps> {
-    static propTypes = {
-        onChange: PropTypes.func,
-        onFocus: PropTypes.func,
-        onBlur: PropTypes.func,
-        value: PropTypes.array
-    };
+    static propTypes =
+        process.env.NODE_ENV === 'development'
+            ? {
+                  onChange: PropTypes.func,
+                  onFocus: PropTypes.func,
+                  onBlur: PropTypes.func,
+                  value: PropTypes.array,
+                  data: PropTypes.array.isRequired
+              }
+            : undefined;
 
     static defaultProps = {
         value: []

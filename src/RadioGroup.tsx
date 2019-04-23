@@ -14,17 +14,21 @@ export interface RadioGroupProps {
     onChange?(value: any): void;
     onFocus?(): void;
     onBlur?(): void;
-    value?: any[];
+    value?: any;
     data: RadioGroupItem[];
 }
 
 export class RadioGroup extends Component<RadioGroupProps> {
-    static propTypes = {
-        onChange: PropTypes.func,
-        onFocus: PropTypes.func,
-        onBlur: PropTypes.func,
-        value: PropTypes.any
-    };
+    static propTypes =
+        process.env.NODE_ENV === 'development'
+            ? {
+                  onChange: PropTypes.func,
+                  onFocus: PropTypes.func,
+                  onBlur: PropTypes.func,
+                  value: PropTypes.any,
+                  data: PropTypes.array.isRequired
+              }
+            : undefined;
 
     public render() {
         const { onChange, value, onFocus, onBlur, data, ...restProps } = this.props;

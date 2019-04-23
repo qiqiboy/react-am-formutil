@@ -82,14 +82,14 @@ function Standard(props) {
                 <FormItem name="radio" label="radio" required>
                     <Radio.RadioItem />
                 </FormItem>
-                <FormItem name="switch" label="switch" required>
+                <FormItem name="switch" label="switch" required checked="a" unchecked="b">
                     <Switch />
                 </FormItem>
             </List>
 
             <h3>Checkbox List</h3>
             <List>
-                <FormItem name="checkboxGroup" label="checkbox" required>
+                <FormItem name="checkboxGroup" label="checkbox" required $defaultValue={['a']}>
                     <CheckboxGroup
                         data={[
                             {

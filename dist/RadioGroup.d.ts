@@ -9,7 +9,7 @@ export interface RadioGroupProps {
     onChange?(value: any): void;
     onFocus?(): void;
     onBlur?(): void;
-    value?: any[];
+    value?: any;
     data: RadioGroupItem[];
 }
 export declare class RadioGroup extends Component<RadioGroupProps> {
@@ -18,6 +18,7 @@ export declare class RadioGroup extends Component<RadioGroupProps> {
         onFocus: PropTypes.Requireable<(...args: any[]) => any>;
         onBlur: PropTypes.Requireable<(...args: any[]) => any>;
         value: PropTypes.Requireable<any>;
-    };
+        data: PropTypes.Validator<any[]>;
+    } | undefined;
     render(): JSX.Element[];
 }

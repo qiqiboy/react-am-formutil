@@ -83,13 +83,16 @@ const _RadioGroup = isUglify ? RadioGroup : 'RadioGroup';
 export class FormItem<T = any, P = {}, Fields = {}, WeakFields = Fields> extends Component<
     FormItemProps<T, P, Fields, WeakFields> & FieldValidatorProps<P> & OtherKeys
 > {
-    public static propTypes = {
-        // @ts-ignore
-        ...ListItem.propTypes,
-        label: PropTypes.any,
-        errorLevel: PropTypes.oneOf([0, 1, 2, 'off']),
-        children: PropTypes.element.isRequired
-    };
+    public static propTypes =
+        process.env.NODE_ENV === 'development'
+            ? {
+                  // @ts-ignore
+                  ...ListItem.propTypes,
+                  label: PropTypes.any,
+                  errorLevel: PropTypes.oneOf([0, 1, 2, 'off']),
+                  children: PropTypes.element.isRequired
+              }
+            : undefined;
 
     public render() {
         const { props } = this;
