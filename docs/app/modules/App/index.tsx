@@ -7,7 +7,7 @@ class App extends Component {
         return (
             <div>
                 <WingBlank>
-                    <h2 style={{ textAlign: 'center' }}>react-antm-formutil</h2>
+                    <h2 style={{ textAlign: 'center' }}>react-am-formutil</h2>
                 </WingBlank>
 
                 <Demo />

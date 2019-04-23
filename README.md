@@ -50,6 +50,7 @@ Happy to use react-formutil in the project based on antd-mobile^\_^
         * [`InputItem` `TextareaItem`](#inputitem-textareaitem)
         * [`Slider` `Range`](#slider-range)
         * [`Stepper`](#stepper)
+        * [`CheckboxGroup` `RadioGroup`](#checkboxgroup-radiogroup)
 - [FAQ](#faq)
     + [`给组件设置的onChange、onFocus等方法无效、不执行`](#给组件设置的onchangeonfocus等方法无效不执行)
 
@@ -324,6 +325,65 @@ setErrorLevel(0);
 ```javascript
 <FormItem name="amount">
     <Stepper />
+</FormItem>
+```
+
+##### `CheckboxGroup` `RadioGroup`
+
+这两个组件不是`antd-mobile`提供的，而是由`react-am-formutil`提供的，用来实现多选组/单选组场景：
+
+```javascript
+// 需要从react-am-formutil中导出这两个组件
+import { CheckboxGroup, RadioGroup, FormItem } from 'react-am-formutil';
+
+<FormItem name="hobbies">
+    <CheckboxGroup
+        data={[
+            {
+                value: 'movie',
+                title: '电影'
+            },
+            {
+                value: 'music',
+                title: '音乐'
+            }
+        ]}
+    />
+</FormItem>
+
+<FormItem name="hobby">
+    <RadioGroup
+        data={[
+            {
+                value: 'movie',
+                title: '电影'
+            },
+            {
+                value: 'music',
+                title: '音乐'
+            }
+        ]}
+    />
+</FormItem>;
+```
+
+这两个组件接收一个data属性，其至少包含`{value, title}`两个字段属性，还可以传递其它属性字段，它们将会传递给实际的`CheckboxItem`或者`RadioItem`组件。
+
+```javascript
+<FormItem name="hobbies">
+    <CheckboxGroup
+        data={[
+            {
+                value: 'movie',
+                title: '电影',
+                disabled: true // 禁用该项选择
+            },
+            {
+                value: 'music',
+                title: '音乐'
+            }
+        ]}
+    />
 </FormItem>
 ```
 
