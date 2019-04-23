@@ -19,13 +19,16 @@ export interface CheckboxGroupProps {
 }
 
 export class CheckboxGroup extends Component<CheckboxGroupProps> {
-    static propTypes = process.env.NODE_ENV === 'development' ?  {
-        onChange: PropTypes.func,
-        onFocus: PropTypes.func,
-        onBlur: PropTypes.func,
-        value: PropTypes.array,
-        data: PropTypes.array.isRequired
-    } : undefined;
+    static propTypes =
+        process.env.NODE_ENV === 'development'
+            ? {
+                  onChange: PropTypes.func,
+                  onFocus: PropTypes.func,
+                  onBlur: PropTypes.func,
+                  value: PropTypes.array,
+                  data: PropTypes.array.isRequired
+              }
+            : undefined;
 
     static defaultProps = {
         value: []

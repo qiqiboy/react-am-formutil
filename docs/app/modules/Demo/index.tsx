@@ -12,6 +12,7 @@ import {
     Slider,
     Picker,
     DatePicker,
+    DatePickerView,
     PickerView,
     SearchBar,
     Stepper
@@ -125,8 +126,15 @@ function Standard(props) {
 
             <h3>DatePicker</h3>
             <List>
-                <FormItem name="datepicker" label="DatePicker" required>
+                <FormItem name="datePicker" label="DatePicker" required>
                     <DatePicker />
+                </FormItem>
+            </List>
+
+            <h3>DatePickerView</h3>
+            <List>
+                <FormItem name="datePickerView" label="DatePickerView" required>
+                    <DatePickerView />
                 </FormItem>
             </List>
 

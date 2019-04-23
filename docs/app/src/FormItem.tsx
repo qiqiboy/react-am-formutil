@@ -1,6 +1,7 @@
 import {
     Checkbox,
     DatePicker,
+    DatePickerView,
     ImagePicker,
     InputItem,
     List,
@@ -66,6 +67,7 @@ function getComponentType(children) {
 const _Checkbox = isUglify ? Checkbox : 'Checkbox';
 const _Radio = isUglify ? Radio : 'Radio';
 const _PickerView = isUglify ? PickerView : 'PickerView';
+const _DatePickerView = isUglify ? DatePickerView : 'DatePickerView';
 const _DatePicker = isUglify ? DatePicker : 'DatePicker';
 const _Switch = isUglify ? Switch : 'Switch';
 const _Range = isUglify ? Range : 'Range';
@@ -248,12 +250,17 @@ export class FormItem<T = any, P = {}, Fields = {}, WeakFields = Fields> extends
                         case _Range:
                         case _Slider:
                         case _PickerView:
+                        case _DatePickerView:
                             return cloneElement(children, {
                                 ...restProps,
                                 ...errorProps,
                                 ...childProps,
-                                title: label,
-                                children: label
+                                ...(label
+                                    ? {
+                                          title: label,
+                                          children: label
+                                      }
+                                    : {})
                             });
 
                         case _DatePicker:

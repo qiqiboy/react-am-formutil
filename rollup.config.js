@@ -63,6 +63,7 @@ function createConfig(env, module) {
                             'Modal',
                             'Checkbox',
                             'DatePicker',
+                            'DatePickerView',
                             'ImagePicker',
                             'InputItem',
                             'Picker',

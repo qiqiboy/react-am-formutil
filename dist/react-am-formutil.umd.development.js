@@ -73,12 +73,12 @@
             return data.map(function (item) { return (React__default.createElement(CheckboxItem, __assign({ key: item.value }, restProps, item, { checked: value.indexOf(item.value) > -1, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
         };
         CheckboxGroup.propTypes = {
-            onChange: PropTypes.func,
-            onFocus: PropTypes.func,
-            onBlur: PropTypes.func,
-            value: PropTypes.array,
-            data: PropTypes.array.isRequired
-        };
+                onChange: PropTypes.func,
+                onFocus: PropTypes.func,
+                onBlur: PropTypes.func,
+                value: PropTypes.array,
+                data: PropTypes.array.isRequired
+            };
         CheckboxGroup.defaultProps = {
             value: []
         };
@@ -140,6 +140,7 @@
     var _Checkbox = isUglify ? antdMobile.Checkbox : 'Checkbox';
     var _Radio = isUglify ? antdMobile.Radio : 'Radio';
     var _PickerView = isUglify ? antdMobile.PickerView : 'PickerView';
+    var _DatePickerView = isUglify ? antdMobile.DatePickerView : 'DatePickerView';
     var _DatePicker = isUglify ? antdMobile.DatePicker : 'DatePicker';
     var _Switch = isUglify ? antdMobile.Switch : 'Switch';
     var _Range = isUglify ? antdMobile.Range : 'Range';
@@ -288,7 +289,13 @@
                         case _Range:
                         case _Slider:
                         case _PickerView:
-                            return React.cloneElement(children, __assign({}, restProps, errorProps, childProps, { title: label, children: label }));
+                        case _DatePickerView:
+                            return React.cloneElement(children, __assign({}, restProps, errorProps, childProps, (label
+                                ? {
+                                    title: label,
+                                    children: label
+                                }
+                                : {})));
                         case _DatePicker:
                         case _Picker:
                             return React.cloneElement(children, __assign({}, childProps, { children: (React__default.createElement(ListItem, __assign({}, restProps, errorProps), label)) }));

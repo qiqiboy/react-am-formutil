@@ -1,5 +1,5 @@
 import { __extends, __rest, __assign } from 'tslib';
-import { Checkbox, Radio, List, Switch, PickerView, DatePicker, Range, Picker, ImagePicker, InputItem, TextareaItem, Slider, Modal } from 'antd-mobile';
+import { Checkbox, Radio, List, Switch, PickerView, DatePickerView, DatePicker, Range, Picker, ImagePicker, InputItem, TextareaItem, Slider, Modal } from 'antd-mobile';
 import PropTypes from 'prop-types';
 import React, { Component, Children, cloneElement } from 'react';
 import { EasyField } from 'react-formutil';
@@ -21,12 +21,12 @@ var CheckboxGroup = /** @class */ (function (_super) {
         return data.map(function (item) { return (React.createElement(CheckboxItem, __assign({ key: item.value }, restProps, item, { checked: value.indexOf(item.value) > -1, children: item.title, onChange: childOnChange.bind(_this, item.value), onFocus: onFocus, onBlur: onBlur }))); });
     };
     CheckboxGroup.propTypes = {
-        onChange: PropTypes.func,
-        onFocus: PropTypes.func,
-        onBlur: PropTypes.func,
-        value: PropTypes.array,
-        data: PropTypes.array.isRequired
-    };
+            onChange: PropTypes.func,
+            onFocus: PropTypes.func,
+            onBlur: PropTypes.func,
+            value: PropTypes.array,
+            data: PropTypes.array.isRequired
+        };
     CheckboxGroup.defaultProps = {
         value: []
     };
@@ -88,6 +88,7 @@ function getComponentType(children) {
 var _Checkbox = isUglify ? Checkbox : 'Checkbox';
 var _Radio = isUglify ? Radio : 'Radio';
 var _PickerView = isUglify ? PickerView : 'PickerView';
+var _DatePickerView = isUglify ? DatePickerView : 'DatePickerView';
 var _DatePicker = isUglify ? DatePicker : 'DatePicker';
 var _Switch = isUglify ? Switch : 'Switch';
 var _Range = isUglify ? Range : 'Range';
@@ -236,7 +237,13 @@ var FormItem = /** @class */ (function (_super) {
                     case _Range:
                     case _Slider:
                     case _PickerView:
-                        return cloneElement(children, __assign({}, restProps, errorProps, childProps, { title: label, children: label }));
+                    case _DatePickerView:
+                        return cloneElement(children, __assign({}, restProps, errorProps, childProps, (label
+                            ? {
+                                title: label,
+                                children: label
+                            }
+                            : {})));
                     case _DatePicker:
                     case _Picker:
                         return cloneElement(children, __assign({}, childProps, { children: (React.createElement(ListItem, __assign({}, restProps, errorProps), label)) }));
