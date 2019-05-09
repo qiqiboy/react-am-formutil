@@ -57,6 +57,8 @@ function createConfig(env, module) {
                             : false,
                     warnings: false,
                     mangle: {
+                        keep_classnames: true,
+                        keep_fnames: true,
                         // https://github.com/ant-design/babel-plugin-import/issues/282
                         reserved: [
                             'List',
